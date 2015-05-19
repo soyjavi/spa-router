@@ -1,0 +1,24 @@
+{
+  "name"                        : "http-router",
+  "version"                     : "0.5.19",
+  "description"                 : "Simple AJAX Http Router.",
+  "homepage"                    : "http://soyjavi.com",
+  "author": {
+    "name": "Javi Jimenez",
+    "email": "javi.jimenez.villar@gmail.com"
+  },
+  "dependencies": {
+    "coffee-script"             : "*"
+  },
+  "devDependencies" : {
+    "gulp"                      : "*",
+    "gulp-coffee"               : "*",
+    "gulp-concat"               : "*",
+    "gulp-flatten"              : "*",
+    "gulp-header"               : "*",
+    "gulp-uglify"               : "*",
+    "gulp-util"                 : "*"
+  },
+  "main"                        : ["http-router.js"],
+  "engines"                     : { "node": "*"}
+}
