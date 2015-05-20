@@ -1,24 +1,35 @@
 {
-  "name"                        : "http-router",
-  "version"                     : "0.5.19",
-  "description"                 : "Simple AJAX Http Router.",
-  "homepage"                    : "http://soyjavi.com",
-  "author": {
-    "name": "Javi Jimenez",
-    "email": "javi.jimenez.villar@gmail.com"
-  },
+  "name": "http-router",
+  "version": "0.5.19",
+  "description": "Simple Async HTTP Router",
+  "main": "http-router.js",
   "dependencies": {
-    "coffee-script"             : "*"
+    "gulp-coffee": "^2.3.1",
+    "gulp-header": "^1.2.2",
+    "gulp-concat": "^2.5.2",
+    "gulp-uglify": "^1.2.0",
+    "gulp": "^3.8.11",
+    "gulp-util": "^3.0.4",
+    "gulp-flatten": "^0.0.4"
   },
-  "devDependencies" : {
-    "gulp"                      : "*",
-    "gulp-coffee"               : "*",
-    "gulp-concat"               : "*",
-    "gulp-flatten"              : "*",
-    "gulp-header"               : "*",
-    "gulp-uglify"               : "*",
-    "gulp-util"                 : "*"
+  "devDependencies": {
+    "coffee-script": "^1.9.2"
   },
-  "main"                        : ["http-router.js"],
-  "engines"                     : { "node": "*"}
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/soyjavi/http-router"
+  },
+  "keywords": [
+    "http",
+    "router"
+  ],
+  "author": "Javi Jimenez Villar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/soyjavi/http-router/issues"
+  },
+  "homepage": "https://github.com/soyjavi/http-router"
 }
