@@ -1,13 +1,13 @@
 ###
 HTML5 API History Wrapper
 
-@namespace HTTProuter
+@namespace SPArouter
 
 @author Javier Jimenez Villar <javi@tapquo.com> || @soyjavi
 ###
 "use strict"
 
-HTTProuter = do ->
+SPArouter = do ->
 
   _regexp =
     attributes  : /:([\w\d]+)/g
@@ -106,6 +106,6 @@ HTTProuter = do ->
   listen  : _listen
   options : _options
 
-window?.HTTProuter = HTTProuter
+window?.SPArouter = SPArouter
 
-module?.exports = HTTProuter
+module?.exports = SPArouter

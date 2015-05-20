@@ -12,7 +12,7 @@ pkg     = require './package.json'
 
 # -- FILES ---------------------------------------------------------------------
 assets = './'
-spec   = './spec'
+spec   = './build/'
 source =
   coffee: 'source/*.coffee'
   test  : 'spec/index.coffee'

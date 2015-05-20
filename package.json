@@ -1,8 +1,8 @@
 {
-  "name": "http-router",
-  "version": "0.5.19",
-  "description": "Simple Async HTTP Router",
-  "main": "http-router.js",
+  "name": "spa-router",
+  "version": "0.5.20",
+  "description": "Single Page Application Router",
+  "main": "spa-router.js",
   "dependencies": {
     "gulp-coffee": "^2.3.1",
     "gulp-header": "^1.2.2",
@@ -20,7 +20,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/soyjavi/http-router"
+    "url": "https://github.com/soyjavi/spa-router"
   },
   "keywords": [
     "http",
@@ -29,7 +29,7 @@
   "author": "Javi Jimenez Villar",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/soyjavi/http-router/issues"
+    "url": "https://github.com/soyjavi/spa-router/issues"
   },
-  "homepage": "https://github.com/soyjavi/http-router"
+  "homepage": "https://github.com/soyjavi/spa-router"
 }

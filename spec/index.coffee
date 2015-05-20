@@ -1,8 +1,9 @@
 
-HTTProuter.listen
+SPArouter.listen
   "/hello/world"  : -> console.log "hello world!"
-  "/hola/:name"   : (params) -> console.log "hola #{params.name}!"
-
-setTimeout ->
-  HTTProuter.path "hola/cataflu"
-, 1000
+  "/hello/:name"  : (params) -> console.log "hola #{params.name}!"
+  "/delay"        : ->
+    setTimeout ->
+      console.log "delayed"
+      SPArouter.path "hello/world"
+    , 1000
