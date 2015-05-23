@@ -9,7 +9,7 @@ HTML5 API History Wrapper
 
 SPArouter = do ->
 
-  _regexp =
+  REGEXP =
     attributes  : /:([\w\d]+)/g
     splat       : /\*([\w\d]+)/g
     escape      : /[-[\]{}()+?.,\\^$|#\s]/g
@@ -22,7 +22,6 @@ SPArouter = do ->
     routes   : {}
 
   ###
-  @TODO
   @method path
   @param  {value}    Array of urls with callbacks
   ###
@@ -35,11 +34,12 @@ SPArouter = do ->
         state = window.history.state or null
         window.history.pushState state, document.title, path
         _onPopState()
+    else if _options.absolute
+      _getPath()
     else
-      if _options.absolute then _getPath() else _getHash()
+      _getHash()
 
   ###
-  @TODO
   @method back
   ###
   _back = ->
@@ -48,34 +48,31 @@ SPArouter = do ->
     window.history.go -steps
 
   ###
-  @TODO
   @method listen
+  @param  {value}  Object with a url matching (key) and callback (value)
   ###
   _listen = (paths = {}) ->
     for path, callback of paths
+      attributes = []
 
-      attributes = ["url"]
-      _regexp.attributes.lastIndex = 0
-      while (match = _regexp.attributes.exec(path)) != null
-        attributes.push(match[1])
+      REGEXP.attributes.lastIndex = 0
+      attributes.push(match[1]) while (match = REGEXP.attributes.exec(path)) != null
+      REGEXP.splat.lastIndex = 0
+      attributes.push(match[1]) while (match = REGEXP.splat.exec(path)) != null
 
-      _regexp.splat.lastIndex = 0
-      while (match = _regexp.splat.exec(path)) != null
-        attributes.push(match[1])
-
-      path = path.replace(_regexp.escape, '\\$&')
-                 .replace(_regexp.attributes, '([^\/]*)')
-                 .replace(_regexp.splat, '(.*?)')
+      path = path.replace(REGEXP.escape, '\\$&')
+                 .replace(REGEXP.attributes, '([^\/]*)')
+                 .replace(REGEXP.splat, '(.*?)')
 
       _options.routes[path] =
         attributes: attributes
         callback  : callback
-        regexp    : new RegExp('^' + path + '$')
+        regexp    : new RegExp '^' + path + '$'
 
     do _onPopState
     window.addEventListener "popstate", _onPopState
 
-  # Private
+  # Private events
   _onPopState = (event) ->
     if event then event.preventDefault()
     path = if _options.absolute then _getPath() else _getHash()
@@ -89,16 +86,14 @@ SPArouter = do ->
     path
 
   _getHash = ->
-    window.location.hash.replace(_regexp.hash, '')
+    window.location.hash.replace(REGEXP.hash, '')
 
   _matchRoute = (path, options) ->
     for key of _options.routes
       route = _options.routes[key]
-      exec = route.regexp.exec(path)
+      exec = route.regexp.exec path
       if exec
-        obj = {}
-        obj[attribute] = exec[index] for attribute, index in route.attributes
-        route.callback?.call(@, obj)
+        route.callback?.apply @, (exec[index + 1] for key, index in route.attributes)
         break
 
   path    : _path
