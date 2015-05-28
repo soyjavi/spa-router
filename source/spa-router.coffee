@@ -21,6 +21,8 @@ SPArouter = do ->
     absolute : false
     routes   : {}
 
+  _listening = false
+
   ###
   @method path
   @param  {value}    Array of urls with callbacks
@@ -44,7 +46,7 @@ SPArouter = do ->
   ###
   _back = ->
     _options.forward = false
-    steps = if window.history.state.steps? then window.history.state.steps else 1
+    steps = if window.history.state?.steps? then window.history.state?.steps else 1
     window.history.go -steps
 
   ###
@@ -70,7 +72,9 @@ SPArouter = do ->
         regexp    : new RegExp '^' + path + '$'
 
     do _onPopState
-    window.addEventListener "popstate", _onPopState
+    unless _listening
+      window.addEventListener "popstate", _onPopState
+      _listening = true
 
   # Private events
   _onPopState = (event) ->

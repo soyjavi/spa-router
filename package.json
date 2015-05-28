@@ -1,6 +1,6 @@
 {
   "name": "spa-router",
-  "version": "0.5.23",
+  "version": "0.5.29",
   "description": "Single Page Application Router",
   "main": "spa-router.js",
   "dependencies": {
